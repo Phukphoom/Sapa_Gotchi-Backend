@@ -1,0 +1,24 @@
+{
+    "name": "sapha-gotchi",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Phukphoom/Sapha_Gotchi-Backend.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Phukphoom/Sapha_Gotchi-Backend/issues"
+    },
+    "homepage": "https://github.com/Phukphoom/Sapha_Gotchi-Backend#readme",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "ethers": "^5.4.3"
+    }
+}
