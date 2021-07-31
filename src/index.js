@@ -30,6 +30,8 @@ const proposeValidator = async () => {
             console.log(`   >> Propose id:${id} image downloaded!`);
         });
 
+        let validateStatus = false;
+
         try {
             let form = new FormData();
             form.append('files', fs.readFileSync(imagePath), `${id}.jpg`);
@@ -45,23 +47,25 @@ const proposeValidator = async () => {
             let keys = Object.keys(data.res);
             let minValueKey = keys.reduce((key, v) => (data.res[v] < data.res[key] ? v : key));
             if (data.res[minValueKey] <= 0.3) {
-                let txDelay = 5000 * inprocessTxCount;
-                inprocessTxCount++;
-
-                console.log(`   >> Propose id:${id} delay for validate tx : ${txDelay} ms`);
-                setTimeout(() => {
-                    gotchiNFT_contract.validate(id, role.toString() == keys.indexOf(minValueKey)).then(() => {
-                        console.log(`   >> Propose id:${id} validated with ${role.toString() == keys.indexOf(minValueKey)}! `);
-                        cmd(`${process.platform == 'win32' ? 'del' : 'rm'} propose_images\\${id}.jpg`);
-                        inprocessTxCount--;
-                    });
-                }, txDelay);
+                validateStatus = role.toString() == keys.indexOf(minValueKey);
             } else {
                 throw new Error('image validation failed');
             }
         } catch (error) {
-            console.log(`   >> Propose id:${id} validate failed!`);
-            inprocessTxCount--;
+            validateStatus = false;
+            console.log(`   >> Propose id:${id} error => ${error}`);
+        } finally {
+            let txDelay = 5000 * inprocessTxCount;
+            console.log(`   >> Propose id:${id} delay for validate tx : ${txDelay} ms`);
+            inprocessTxCount++;
+
+            setTimeout(() => {
+                gotchiNFT_contract.validate(id, validateStatus).then(() => {
+                    console.log(`   >> Propose id:${id} validated with ${validateStatus}! `);
+                    cmd(`${process.platform == 'win32' ? `del propose_images\\${id}.jpg` : `rm propose_images/${id}.jpg`} `);
+                    inprocessTxCount--;
+                });
+            }, txDelay);
         }
     });
 };
