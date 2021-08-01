@@ -9,14 +9,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Phukphoom/Sapha_Gotchi-ProposeValidator.git"
+        "url": "git+https://github.com/Phukphoom/SaphaGotchi-ProposeValidator.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Phukphoom/Sapha_Gotchi-ProposeValidator/issues"
+        "url": "https://github.com/Phukphoom/SaphaGotchi-ProposeValidator/issues"
     },
-    "homepage": "https://github.com/Phukphoom/Sapha_Gotchi-ProposeValidator#readme",
+    "homepage": "https://github.com/Phukphoom/SaphaGotchi-ProposeValidator#readme",
     "dependencies": {
         "axios": "^0.21.1",
         "dotenv": "^10.0.0",
