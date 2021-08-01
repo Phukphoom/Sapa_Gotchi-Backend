@@ -31,7 +31,6 @@ const proposeValidator = async () => {
         });
 
         let validateStatus = false;
-
         try {
             let form = new FormData();
             form.append('files', fs.readFileSync(imagePath), `${id}.jpg`);
