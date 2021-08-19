@@ -1,6 +1,6 @@
 # **Sapha Gotchi | Stupid Hackathon Thailand 5**
 
--   Repository นี้เป็นส่วนของ Bot สำหรับติดต่อ ฺBlockchain Network (ในที่นี้ใช้ bsc_testnet)
+-   Repository นี้เป็นส่วนของ Bot สำหรับติดต่อ Blockchain Network (ในที่นี้ใช้ bsc_testnet)
 -   ทำหน้าที่ validate propose ใหม่ๆ ของ Sapha Gotchi Contract
 
 ### **Installation**
